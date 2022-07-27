@@ -94,7 +94,7 @@ pipeline {
           try {
             bat("echo ${defTimestamp}")
             bat ("echo ${WORKSPACE}")
-            File fl = new File("${WORKSPACE}/target/cucumber/counter.json")
+		    File fl = new File("C:/Reportes_Rendimiento/target/cucumber/counter.json")
             println("C:/Reportes_Rendimiento/target/cucumber/counter.json")
             def jsonSlurper = new JsonSlurper()
             def obj = jsonSlurper.parseText(fl.text)
