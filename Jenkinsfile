@@ -28,7 +28,7 @@ def getConfig() {
 
 pipeline {
   //agent any
-  agent {label 'Slave_1'}
+  agent {label 'Slave_QA2'}
   tools {
     maven 'M3'
     jdk 'jdk8.221'
