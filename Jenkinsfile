@@ -27,8 +27,8 @@ def getConfig() {
 }
 
 pipeline {
-  agent any
-  // agent {label 'Slave_1'}
+  //agent any
+  agent {label 'Slave_1'}
   tools {
     maven 'M3'
     jdk 'jdk8.221'
@@ -74,6 +74,19 @@ pipeline {
         }
       }
     }
+	
+	
+	stage ('Cargar Reporte SFTP') {
+	steps {
+    ftpPublisher alwaysPublishFromMaster: true,
+                 continueOnError: false,
+                 failOnError: false,
+                 masterNodeName: '',
+                 paramPublish: null,
+		 
+                 publishers: [[configName: 'Itera_FTP', transfers: [[asciiMode: false, cleanRemote: true, excludes: '', flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'public/*,target/cucumber/counter.json']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false]]
+	}
+  }
 
     stage('Extract_Result') {
       steps {
@@ -82,7 +95,7 @@ pipeline {
             bat("echo ${defTimestamp}")
             bat ("echo ${WORKSPACE}")
             File fl = new File("${WORKSPACE}/target/cucumber/counter.json")
-            println("${WORKSPACE}/target/cucumber/counter.json")
+            println("C:/Reportes_Rendimiento/target/cucumber/counter.json")
             def jsonSlurper = new JsonSlurper()
             def obj = jsonSlurper.parseText(fl.text)
  //         println("Archivo: ${obj}")
