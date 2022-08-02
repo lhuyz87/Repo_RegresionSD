@@ -84,7 +84,7 @@ pipeline {
                  masterNodeName: '',
                  paramPublish: null,
 		 
-                 publishers: [[configName: 'Itera_FTP', transfers: [[asciiMode: false, cleanRemote: true, excludes: '', flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'public/*,target/cucumber/counter.json']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false]]
+                 publishers: [[configName: 'Itera_FTP_v2', transfers: [[asciiMode: false, cleanRemote: true, excludes: '', flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'public/*,target/cucumber/counter.json']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false]]
 	}
   }
 
